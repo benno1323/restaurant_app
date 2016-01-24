@@ -32,4 +32,9 @@ RSpec.describe Order, type: :model do
   	@order.valid?
   	expect(@order.errors[:restaurant_id]).to include("can't be blank")
   end
+
+  it 'has a number of items' do
+    order = create(:order_with_items)
+    expect(order.items.count).to eq(5)
+  end
 end
