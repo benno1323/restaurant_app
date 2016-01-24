@@ -44,4 +44,9 @@ RSpec.describe Dish, type: :model do
   	@dish.valid?
   	expect(@dish.errors[:restaurant_id]).to include("can't be blank")
   end
+
+  it 'has a number of items' do
+    dish = create(:dish_with_items)
+    expect(dish.items.count).to eq(5)
+  end
 end
