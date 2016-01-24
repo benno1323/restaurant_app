@@ -1,6 +1,9 @@
 FactoryGirl.define do
   factory :item do
-    price "9.99"
+    name "MyString"
+price "9.99"
+order nil
+dish nil
   end
 
 end
