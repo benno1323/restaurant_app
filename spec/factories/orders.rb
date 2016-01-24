@@ -1,10 +1,9 @@
 FactoryGirl.define do
   factory :order do
-    date "2016-01-23"
-sub_total "9.99"
-taxes "9.99"
-total "9.99"
-restaurant nil
+  	association :restaurant
+		date Date.today.strftime("%b %d, %Y")
+		sub_total { Faker::Commerce.price }
+		taxes			{ Faker::Commerce.price }
+		total 		{ Faker::Commerce.price }
   end
-
 end
