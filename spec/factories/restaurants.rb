@@ -1,10 +1,9 @@
 FactoryGirl.define do
   factory :restaurant do
-    name "MyString"
-description "MyText"
-address "MyText"
-phone "MyString"
-logo "MyString"
-  end
-
+		name 				{ Faker::Company.name }
+		description	{ Faker::Company.catch_phrase }
+		address 		{ Faker::Address.street_address }
+		phone 			{ Faker::PhoneNumber.phone_number }
+		logo 				"image.jpg"
+	end
 end
