@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :item do
-    name "MyString"
-price "9.99"
-order nil
-dish nil
+  	association :order
+  	association :dish
+		sequence(:name) { |n| "Item #{n}" }
+		price "9.99"
   end
 
 end
