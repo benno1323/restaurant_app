@@ -20,3 +20,6 @@
 
 # Remove local images
 app/assets/images
+
+# Remove public uploads
+public/uploads
