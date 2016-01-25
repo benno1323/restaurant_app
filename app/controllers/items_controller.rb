@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 	before_action :load_dish
+	before_action :authenticate_admin!
 
 	def index
 		@items = @dish.items
