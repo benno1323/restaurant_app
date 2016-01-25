@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 		@item = @dish.items.build(item_params)
 
 		if @item.save
-			redirect_to(@dish)
+			redirect_to(restaurant_dish_path(@dish.restaurant_id, @dish))
 		else
 			render :new
 		end
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
 		@item = @dish.items.find(params[:id])
 
 		if @item.update(item_params)
-			redirect_to(dish_item_path(@dish, @item))
+			redirect_to(restaurant_dish_path(@dish.restaurant_id, @dish))
 		else
 			render :edit
 		end
@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
 	def destroy
 		@item = @dish.items.find(params[:id])
 		@item.destroy
-		redirect_to(@dish)
+		redirect_to(restaurant_dish_path(@dish.restaurant_id, @dish))
 	end
 
 	private
