@@ -21,7 +21,7 @@
 			<tbody>
 				<% @restaurant.dishes.each do |dish| %>
 					<tr>
-						<td><%= link_to(image_tag(dish.photo), restaurant_dish_path(@restaurant, dish)) %></td>
+						<td><%= link_to(image_tag(dish.photo.thumb), restaurant_dish_path(@restaurant, dish)) %></td>
 						<td><%= dish.dish_group %></td>
 						<td><%= dish.name %></td>
 						<td><%= dish.description %></td>

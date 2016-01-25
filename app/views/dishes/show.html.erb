@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<%= image_tag(@dish.photo) %>
+				<%= image_tag(@dish.photo.medium) %>
 				<div class="caption">
 					<h1><%= @dish.name %></h1>
 					<p><%= number_to_currency(@dish.price) %></p>
