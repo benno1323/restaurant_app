@@ -5,7 +5,7 @@ RSpec.describe Item, type: :model do
 		@item = build(:item)
 	end
 
-  it 'is valid with a name, price, order_id and dish_id' do
+  it 'is valid with a name, calories, order_id and dish_id' do
   	expect(@item).to be_valid
   end
 
@@ -15,10 +15,10 @@ RSpec.describe Item, type: :model do
   	expect(@item.errors[:name]).to include("can't be blank")
   end
 
-  it 'is invalid without a price' do
-  	@item.price = nil
+  it 'is invalid without calories' do
+  	@item.calories = nil
   	@item.valid?
-  	expect(@item.errors[:price]).to include("can't be blank")
+  	expect(@item.errors[:calories]).to include("can't be blank")
   end
 
   # it 'is invalid without an order_id' do
