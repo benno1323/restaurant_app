@@ -1,6 +1,6 @@
 class DishesController < ApplicationController
-	before_action :load_restaurant
-	before_action :find_restaurant_dish, only: [:show, :edit, :update, :destroy]
+	before_action :load_restaurant, except: :destroy
+	before_action :find_restaurant_dish, only: [:show, :edit, :update]
 	before_action :authenticate_admin!, except: :show
 
 	def index
@@ -36,6 +36,8 @@ class DishesController < ApplicationController
 	end
 
 	def destroy
+		@dish = Dish.find(params[:id])
+		@restaurant = Restaurant.find(@dish.restaurant_id)
 		@dish.destroy
 		redirect_to(@restaurant)
 	end
