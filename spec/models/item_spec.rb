@@ -21,11 +21,11 @@ RSpec.describe Item, type: :model do
   	expect(@item.errors[:price]).to include("can't be blank")
   end
 
-  it 'is invalid without an order_id' do
-  	@item.order_id = nil
-  	@item.valid?
-  	expect(@item.errors[:order_id]).to include("can't be blank")
-  end
+  # it 'is invalid without an order_id' do
+  # 	@item.order_id = nil
+  # 	@item.valid?
+  # 	expect(@item.errors[:order_id]).to include("can't be blank")
+  # end
 
   it 'is invalid without a dish_id' do
   	@item.dish_id = nil

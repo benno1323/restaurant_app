@@ -67,9 +67,9 @@ RSpec.describe ItemsController, type: :controller do
 					}.to change(Item, :count).by(1)
 			end
 
-			it 'redirects to the items#show' do
-				post :create, dish_id: @dish, items: valid_attributes
-				expect(response).to redirect_to(@dish)
+			it 'redirects to the restaurant dish path' do
+				post :create, dish_id: @dish, item: valid_attributes
+				expect(response).to redirect_to(restaurant_dish_path(@dish.restaurant_id, @dish))
 			end
 		end
 
@@ -100,7 +100,7 @@ RSpec.describe ItemsController, type: :controller do
 			it 'redirects to items#show' do
 				patch :update, dish_id: @dish, id: @item,
 											 item: updated_attributes
-				expect(response).to redirect_to(dish_item_path(@dish, @item))
+				expect(response).to redirect_to(restaurant_dish_path(@dish.restaurant_id, @dish))
 			end
 		end
 
@@ -134,7 +134,7 @@ RSpec.describe ItemsController, type: :controller do
 
 		it 'redirects to dish#show view' do
 			delete :destroy, dish_id: @dish, id: @item
-			expect(response).to redirect_to(dish_path(@dish))
+			expect(response).to redirect_to(restaurant_dish_path(@dish.restaurant_id, @dish))
 		end
 	end
 end
