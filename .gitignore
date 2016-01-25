@@ -14,3 +14,9 @@
 
 # Ignore .env
 .env
+
+# Remove .DS_Store
+.DS_Store
+
+# Remove local images
+app/assets/images
