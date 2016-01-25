@@ -3,4 +3,6 @@ class Dish < ActiveRecord::Base
   has_many :items
   validates :dish_group, :name, :description, :price, :photo, :restaurant_id,
   					presence: true
+
+  mount_uploader :photo, PhotoUploader
 end
