@@ -1,0 +1,25 @@
+<div class="container">
+<%= form_for([@dish, @item]) do |f| %>
+
+	<% if @item.errors.any? %>
+		<ul>
+			<% @item.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+	<div class="form-group">
+		<%= f.label :price %>
+		<%= f.text_field :price, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+		<%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>

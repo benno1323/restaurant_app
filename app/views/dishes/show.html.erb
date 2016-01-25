@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<%= image_tag(@dish.photo) %>
+				<div class="caption">
+					<h1><%= @dish.name %></h1>
+					<p><%= number_to_currency(@dish.price) %></p>
+					<%= link_to 'New Item', new_dish_item_path(@dish, @item), class: 'btn btn-success' %>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<% if @dish.items.empty? %>
+				<p>No ingredients added yet!</p>
+			<% else %>
+				<table class='table'>
+					<thead>
+						<tr>
+							<td>Ingredient</td>
+							<td>Edit</td>
+							<td>Destroy</td>
+						</tr>
+					</thead>
+					<tbody>
+					<% @dish.items.each do |item| %>
+						<tr>
+							<td><%= item.name %></td>
+							<td><%= link_to 'Edit', edit_dish_item_path(@dish, item) %></td>
+							<td><%= link_to('Destroy', dish_item_path(@dish, item), method: :delete,
+															data: { confirm: 'Are you sure?' }) %></td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-8">
+			<%= link_to 'Back', restaurant_path(@dish.restaurant_id), class: 'btn btn-danger' %>
+		</div>
+	</div>
+</div>

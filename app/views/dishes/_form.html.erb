@@ -1,0 +1,40 @@
+<div class="container">
+<%= form_for([@restaurant, @dish]) do |f| %>
+
+	<% if @dish.errors.any? %>
+		<ul>
+			<% @dish.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
+	<div class="form-group">
+		<%= f.label :dish_group %>
+		<%= f.text_field :dish_group, class: 'form-control' %>
+  </div>
+
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+		<%= f.label :description %>
+		<%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+		<%= f.label :price %>
+		<%= f.text_field :price, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+		<%= f.label :photo %>
+		<%= f.text_field :photo, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+		<%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>

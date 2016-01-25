@@ -1,0 +1,37 @@
+<div class="container">
+	<h1><%= @restaurant.name %></h1>
+	<%= link_to('New Dish', new_restaurant_dish_path(@restaurant), class: 'btn btn-success') %>
+	<%= link_to('Back', restaurants_path, class: 'btn btn-danger') %>
+
+	<% if @restaurant.dishes.empty? %>
+		<h2>No dishes available yet.</h2>
+	<% else %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Photo</th>
+					<th>Group</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Edit</th>
+					<th>Destroy</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @restaurant.dishes.each do |dish| %>
+					<tr>
+						<td><%= link_to(image_tag(dish.photo), restaurant_dish_path(@restaurant, dish)) %></td>
+						<td><%= dish.dish_group %></td>
+						<td><%= dish.name %></td>
+						<td><%= dish.description %></td>
+						<td><%= dish.price %></td>
+						<td><%= link_to('Edit', edit_restaurant_dish_path(@restaurant, dish)) %></td>
+						<td><%= link_to('Destroy', dish, method: :delete,
+														data: { confirm: 'Are you sure?' }) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>
+</div>
