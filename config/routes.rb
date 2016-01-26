@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'my_restaurants/index', as: 'my_restaurants'
   devise_for :admins
   resources :restaurants do
     resources :dishes

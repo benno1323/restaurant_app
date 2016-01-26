@@ -1,0 +1,2 @@
+module MyRestaurantsHelper
+end
