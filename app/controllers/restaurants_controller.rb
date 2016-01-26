@@ -18,6 +18,7 @@ class RestaurantsController < ApplicationController
 
 	def create
 		@restaurant = current_admin.restaurants.build(restaurant_params)
+		@restaurant.admin_id = current_admin.id
 
 		if @restaurant.save
 			redirect_to(my_restaurants_path, notice: 'Restaurant created successfully!')
