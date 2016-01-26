@@ -20,7 +20,7 @@ class RestaurantsController < ApplicationController
 		@restaurant = current_admin.restaurants.build(restaurant_params)
 
 		if @restaurant.save
-			redirect_to restaurants_path
+			redirect_to(my_restaurants_path, notice: 'Restaurant created successfully!')
 		else
 			render :new
 		end
@@ -29,7 +29,7 @@ class RestaurantsController < ApplicationController
 	def update
 		@restaurant.admin = current_admin
 		if @restaurant.update(restaurant_params)
-			redirect_to @restaurant
+			redirect_to(my_restaurants_path, notice: 'Restaurant updated correctly!')
 		else
 			render :edit
 		end
@@ -37,7 +37,7 @@ class RestaurantsController < ApplicationController
 
 	def destroy
 		@restaurant.destroy
-		redirect_to restaurants_path
+		redirect_to(my_restaurants_path, notice: 'Restaurant destroyed!')
 	end
 
 	private
