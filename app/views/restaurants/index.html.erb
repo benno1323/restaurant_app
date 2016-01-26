@@ -1,7 +1,4 @@
 <div class="container">
-	<% if admin_signed_in? %>
-	<%= link_to('New Restaurant', new_restaurant_path, class: 'btn btn-success') %>
-	<% end %>
 
 	<% if @restaurants.empty? %>
 		<h2>No Restaurants have been added yet!</h2>

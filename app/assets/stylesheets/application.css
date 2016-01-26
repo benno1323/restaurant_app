@@ -15,3 +15,41 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/* Bootstrap classes */
+
+.navbar-default {
+	background-color: #D35400;
+	border-color: #D35400;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: white;
+}
+
+.navbar-header > .navbar-brand {
+	color: whitesmoke;
+}
+
+.navbar-header > .navbar-brand:hover {
+	color: whitesmoke;
+}
+
+/* Buttons */
+
+.btn-home {
+	color: white;
+	background-color: #D35400;
+	border-color: #D35400;
+	border-radius: 0 0 0 0;
+}
+
+.btn-home:hover {
+	color: white;
+	background-color: #E67E22;
+	border-color: #E67E22;
+}
+
+.btn-danger {
+	border-radius: 0 0 0 0;
+}
