@@ -6,7 +6,9 @@
 				<div class="caption">
 					<h1><%= @dish.name %></h1>
 					<p><%= number_to_currency(@dish.price) %></p>
-					<%= link_to 'New Item', new_dish_item_path(@dish, @item), class: 'btn btn-success' %>
+					<% if admin_signed_in? %>
+						<%= link_to 'New Item', new_dish_item_path(@dish, @item), class: 'btn btn-success' %>
+					<% end %>
 				</div>
 			</div>
 		</div>
@@ -19,17 +21,23 @@
 					<thead>
 						<tr>
 							<td>Ingredient</td>
+							<td>Calories</td>
+							<% if admin_signed_in? %>
 							<td>Edit</td>
 							<td>Destroy</td>
+							<% end %>
 						</tr>
 					</thead>
 					<tbody>
 					<% @dish.items.each do |item| %>
 						<tr>
 							<td><%= item.name %></td>
-							<td><%= link_to 'Edit', edit_dish_item_path(@dish, item) %></td>
-							<td><%= link_to('Destroy', dish_item_path(@dish, item), method: :delete,
-															data: { confirm: 'Are you sure?' }) %></td>
+							<td><%= item.calories %></td>
+							<% if admin_signed_in? %>
+								<td><%= link_to 'Edit', edit_dish_item_path(@dish, item) %></td>
+								<td><%= link_to('Destroy', dish_item_path(@dish, item), method: :delete,
+																data: { confirm: 'Are you sure?' }) %></td>
+							<% end %>
 						</tr>
 					<% end %>
 					</tbody>

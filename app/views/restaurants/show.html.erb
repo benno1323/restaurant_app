@@ -1,7 +1,10 @@
 <div class="container">
 	<h1><%= @restaurant.name %></h1>
-	<%= link_to('New Dish', new_restaurant_dish_path(@restaurant), class: 'btn btn-success') %>
-	<%= link_to('Back', restaurants_path, class: 'btn btn-danger') %>
+
+	<% if admin_signed_in? %>
+		<%= link_to('New Dish', new_restaurant_dish_path(@restaurant), class: 'btn btn-success') %>
+		<%= link_to('Back', restaurants_path, class: 'btn btn-danger') %>
+	<% end %>
 
 	<% if @restaurant.dishes.empty? %>
 		<h2>No dishes available yet.</h2>
@@ -14,8 +17,10 @@
 					<th>Name</th>
 					<th>Description</th>
 					<th>Price</th>
+					<% if admin_signed_in? %>
 					<th>Edit</th>
 					<th>Destroy</th>
+					<% end %>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,9 +31,11 @@
 						<td><%= dish.name %></td>
 						<td><%= dish.description %></td>
 						<td><%= dish.price %></td>
+						<% if admin_signed_in? %>
 						<td><%= link_to('Edit', edit_restaurant_dish_path(@restaurant, dish)) %></td>
 						<td><%= link_to('Destroy', dish, method: :delete,
 														data: { confirm: 'Are you sure?' }) %></td>
+						<% end %>
 					</tr>
 				<% end %>
 			</tbody>
